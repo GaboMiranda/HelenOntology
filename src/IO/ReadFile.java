@@ -43,16 +43,18 @@ public class ReadFile {
 //                    System.out.println(i+" "+p.getId()+"  "+"  "+p.getName());
 //                    pw.write(p.getId()+"\t"+p.getName()+"\n");
                         i++;
+                        cadena=cadena.replace("id: ", "");
                         p.setId(cadena);
                        }
                     
                    }
                    if(cadena.contains("name:")){
+                       cadena=cadena.replace("name: ", "");
                        p.setName(cadena);
                        pw.write(p.getId()+"\t"+p.getName()+"\n");
                    }
                    if(cadena.contains("is_a:")){
-                       
+                           cadena=cadena.replace("is_a: ", "");
                            p.setIs_a(cadena);
                            pw2.write(p.getId()+"\t"+p.getIs_a()+"\n");
                            p.setIs_a("--");
