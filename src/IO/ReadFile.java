@@ -27,6 +27,7 @@ public class ReadFile {
         FileReader f = new FileReader(archivo+ext); 
         //bw = new BufferedWriter(new FileWriter(archivo+"_IDs"+ext));
         PrintWriter pw = new PrintWriter(archivo+"_IDs"+ext);
+        PrintWriter pw2 = new PrintWriter(archivo+"_is_a"+ext);
 
          try (BufferedReader b = new BufferedReader(f)) {
              int i = 0;
@@ -46,20 +47,21 @@ public class ReadFile {
                        }
                     
                    }
-                   if(cadena.contains("name:"))
+                   if(cadena.contains("name:")){
                        p.setName(cadena);
+                       pw.write(p.getId()+"\t"+p.getName()+"\n");
+                   }
                    if(cadena.contains("is_a:")){
-                       while((cadena = b.readLine()).contains("is_a:")) {
+                       
                            p.setIs_a(cadena);
-                           System.out.println(i+" - "+p.getId()+" - "+p.getName()+" - "+p.getIs_a());
-                           p.setId("");
-                           p.setIs_a("");
-                           p.setName("");
-                       }
+                           pw2.write(p.getId()+"\t"+p.getIs_a()+"\n");
+                           p.setIs_a("--");
+                       
                    }
              }
-             b.close();
+             f.close();
              pw.close();
+             pw2.close();
         }
     }
      

@@ -22,7 +22,7 @@ public class HelenOntology {
     public static void main(String[] args) {
         ReadFile rf = new ReadFile();
         try {
-            rf.ReadTxt("/home/andres/workspace/Helena/cell_ontology",".txt");
+            rf.ReadTxt("archivos/cell_ontology",".txt");
         } catch (IOException ex) {
             Logger.getLogger(HelenOntology.class.getName()).log(Level.SEVERE, null, ex);
         }
